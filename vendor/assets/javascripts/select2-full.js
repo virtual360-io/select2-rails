@@ -1790,7 +1790,7 @@ S2.define('select2/selection/allowClear',[
 
     this.$element.val(this.placeholder.id).trigger('change');
 
-    this.trigger('toggle', {});
+    // this.trigger('toggle', {}); // [V360] - Quando o select é ajaxify e possui reload on change, a caixa de seleção fica travada em tela após o reload bloquando todo o resto
   };
 
   AllowClear.prototype._handleKeyboardClear = function (_, evt, container) {
