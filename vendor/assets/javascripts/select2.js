@@ -5511,37 +5511,40 @@ S2.define('select2/core',[
 
     var self = this;
 
-    // Bind the container to all of the adapters
-    this._bindAdapters();
+    if(!options['hardDisabled']) {
 
-    // Register any DOM event handlers
-    this._registerDomEvents();
+      // Bind the container to all of the adapters
+      this._bindAdapters();
 
-    // Register any internal event handlers
-    this._registerDataEvents();
-    this._registerSelectionEvents();
-    this._registerDropdownEvents();
-    this._registerResultsEvents();
-    this._registerEvents();
+      // Register any DOM event handlers
+      this._registerDomEvents();
 
-    // Set the initial state
-    this.dataAdapter.current(function (initialData) {
-      self.trigger('selection:update', {
-        data: initialData
+      // Register any internal event handlers
+      this._registerDataEvents();
+      this._registerSelectionEvents();
+      this._registerDropdownEvents();
+      this._registerResultsEvents();
+      this._registerEvents();
+
+      // Set the initial state
+      this.dataAdapter.current(function (initialData) {
+        self.trigger('selection:update', {
+          data: initialData
+        });
       });
-    });
 
-    // Hide the original select
-    $element[0].classList.add('select2-hidden-accessible');
-    $element.attr('aria-hidden', 'true');
+      // Hide the original select
+      $element[0].classList.add('select2-hidden-accessible');
+      $element.attr('aria-hidden', 'true');
 
-    // Synchronize any monitored attributes
-    this._syncAttributes();
+      // Synchronize any monitored attributes
+      this._syncAttributes();
 
-    Utils.StoreData($element[0], 'select2', this);
+      Utils.StoreData($element[0], 'select2', this);
 
-    // Ensure backwards compatibility with $element.data('select2').
-    $element.data('select2', this);
+      // Ensure backwards compatibility with $element.data('select2').
+      $element.data('select2', this);
+    }
   };
 
   Utils.Extend(Select2, Utils.Observable);
