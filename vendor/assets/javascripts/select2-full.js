@@ -5085,7 +5085,7 @@ S2.define('select2/core',[
     var self = this;
 
     // Bind the container to all of the adapters
-    this._bindAdapters();
+    this._bindAdapters(options);
 
     // Register any DOM event handlers
     this._registerDomEvents();
@@ -5190,12 +5190,14 @@ S2.define('select2/core',[
     return method;
   };
 
-  Select2.prototype._bindAdapters = function () {
+  Select2.prototype._bindAdapters = function (options) {
     this.dataAdapter.bind(this, this.$container);
     this.selection.bind(this, this.$container);
 
-    this.dropdown.bind(this, this.$container);
-    this.results.bind(this, this.$container);
+    if (!options || !options['hardDisabled']) {
+      this.dropdown.bind(this, this.$container);
+      this.results.bind(this, this.$container);
+    }
   };
 
   Select2.prototype._registerDomEvents = function () {
