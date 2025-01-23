@@ -5621,7 +5621,7 @@ S2.define('select2/core',[
 
   Select2.prototype.render = function () {
     var $container = $(
-      '<span class="select2 select2-container" data-turbo-temporary>' +
+      '<span class="select2 select2-container">' +
         '<span class="selection"></span>' +
         '<span class="dropdown-wrapper" aria-hidden="true"></span>' +
       '</span>'
